@@ -5,13 +5,20 @@
 }
 
 body {
-    background-color: #ccb49b;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,11,107,1) 50%, rgba(0,0,0,1) 100%);
 }
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.header {
+    font-size: 50px;
+    color: azure;
 }
 
 .calculator {
@@ -70,7 +77,12 @@ body {
     background-color: orangered;
 }
 
+.clear:hover {
+    border: 2px solid red;
+}
+
 .clear:active {
+    border: 2px solid orangered;
     background-color: red;
 }
 
