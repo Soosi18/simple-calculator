@@ -56,12 +56,14 @@ const assignOperand = (num) => {
 const enableButtons = () => {
     const buttonList = document.querySelectorAll(".button");
     const display = document.querySelector(".display-content");
+    const prev = document.querySelector(".prev");
     const numsAsString = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const operators = ['+', '-', '*', '/'];
 
     buttonList.forEach(button => { button.addEventListener('click', e => {
         if (button.value === "AC"){
             display.innerHTML = '';
+            prev.innerHTML = '';
             clearOperation();
         }
 
@@ -91,11 +93,23 @@ const enableButtons = () => {
         else if (button.value === '='){
             if (isReady()){
                 display.innerHTML = parseFloat(operate().toFixed(6));
-                if (!(display.innerHTML === 'bruh')) operation.num1 = display.innerHTML;
+                if (!(display.innerHTML === 'bruh')){
+                    operation.num1 = display.innerHTML;
+                    operation.num2 = undefined;
+                } 
+                prev.innerHTML = "Ans=" + display.innerHTML;
             }
         }
 
         else if (operators.includes(button.value)){
+            if (isReady()){
+                display.innerHTML = parseFloat(operate().toFixed(6));
+                if (!(display.innerHTML === 'bruh')){
+                    operation.num1 = display.innerHTML;
+                    operation.num2 = undefined;
+                }
+                prev.innerHTML = "Ans=" + display.innerHTML;
+            }
             operation["operator"] = button.value;
             display.innerHTML = '';
         }
